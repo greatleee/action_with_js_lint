@@ -1,0 +1,14 @@
+{
+  "parser": "postcss-scss",
+  "map": false,
+  "plugins": {
+    "postcss-import": {},
+    "postcss-preset-env": {},
+    "postcss-calc": {},
+    "postcss-mq-last": {},
+    "css-mqgroup": {
+      "sort": true
+    },
+    "postcss-normalize": {}
+  }
+}
