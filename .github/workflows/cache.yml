@@ -30,8 +30,7 @@ jobs:
         cache: 'npm'
 
     - name: Install npm dependencies
-      if: steps.setup-node.outputs.cache-hit != 'true'
-      run: npm ci
+      run: npm install
 
     - name: Run linters
       run: |
