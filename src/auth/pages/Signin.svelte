@@ -1,5 +1,5 @@
 <script lang="ts">
-  let test = 'asd'
+  let test = 'asdd'
   let test1
 </script>
 
