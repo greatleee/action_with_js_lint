@@ -1,0 +1,36 @@
+name: cache test
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Person to greet"
+        required: true
+        default: "bossm0n5t3r"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  runLinters:
+    name: Run linters
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out Git repository
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16.14.0'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm install
+
+    - name: Run lint
+      run: |
+        echo "Run lint!!!!!!!"
