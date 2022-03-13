@@ -31,10 +31,12 @@ jobs:
 
     - name: Install npm dependencies
       if: steps.setup-node.outputs.cache-hit != 'true'
-      run: npm install
+      run: npm ci
 
     - name: Run linters
-      uses: wearerequired/lint-action@v1
-      with:
-        eslint: true
-        prettier: true
+      run: |
+        npm run lint
+      # uses: wearerequired/lint-action@v1
+      # with:
+      #   eslint: true
+      #   prettier: true
