@@ -1,0 +1,33 @@
+name: build docker image
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Person to greet"
+        required: true
+        default: "bossm0n5t3r"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  buildDockerImage:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Get changed files
+      id: changed-package
+      uses: tj-actions/changed-files@v17.3
+      with:
+        files: |
+          package.json
+
+    - name: Build docker image
+      if: steps.changed-package.outputs.only_changed == 'true'
+      run: |
+        echo "building docker image completed!"
